@@ -13,8 +13,12 @@
 		84CEA3872A0D310B005A54D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CEA3852A0D310B005A54D8 /* LaunchScreen.storyboard */; };
 		84CEA3902A0D3212005A54D8 /* StartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA38F2A0D3212005A54D8 /* StartService.swift */; };
 		84CEA3962A0D3487005A54D8 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3952A0D3487005A54D8 /* SplashScreenViewController.swift */; };
-		84CEA3982A0D3496005A54D8 /* SplashScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3972A0D3496005A54D8 /* SplashScreenBuilder.swift */; };
-		84CEA39A2A0D34A3005A54D8 /* SplashScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3992A0D34A3005A54D8 /* SplashScreenPresenter.swift */; };
+		84CEA39E2A0E6BF8005A54D8 /* SplashScreenConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA39D2A0E6BF8005A54D8 /* SplashScreenConstants.swift */; };
+		84CEA3A02A0E6C6A005A54D8 /* SplashScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA39F2A0E6C6A005A54D8 /* SplashScreenPresenter.swift */; };
+		84CEA3A32A0E6D4F005A54D8 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3A22A0E6D4F005A54D8 /* CatalogViewController.swift */; };
+		84CEA3A52A0E6D5E005A54D8 /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3A42A0E6D5E005A54D8 /* CatalogPresenter.swift */; };
+		84CEA3A72A0E6D68005A54D8 /* CatalogBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3A62A0E6D68005A54D8 /* CatalogBuilder.swift */; };
+		84CEA3A92A0E6E31005A54D8 /* SplashScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3A82A0E6E31005A54D8 /* SplashScreenBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +30,12 @@
 		84CEA3882A0D310B005A54D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84CEA38F2A0D3212005A54D8 /* StartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartService.swift; sourceTree = "<group>"; };
 		84CEA3952A0D3487005A54D8 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
-		84CEA3972A0D3496005A54D8 /* SplashScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenBuilder.swift; sourceTree = "<group>"; };
-		84CEA3992A0D34A3005A54D8 /* SplashScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenPresenter.swift; sourceTree = "<group>"; };
+		84CEA39D2A0E6BF8005A54D8 /* SplashScreenConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenConstants.swift; sourceTree = "<group>"; };
+		84CEA39F2A0E6C6A005A54D8 /* SplashScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenPresenter.swift; sourceTree = "<group>"; };
+		84CEA3A22A0E6D4F005A54D8 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
+		84CEA3A42A0E6D5E005A54D8 /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
+		84CEA3A62A0E6D68005A54D8 /* CatalogBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogBuilder.swift; sourceTree = "<group>"; };
+		84CEA3A82A0E6E31005A54D8 /* SplashScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenBuilder.swift; sourceTree = "<group>"; };
 		A63D4CAD8A3040BF3B0F99AB /* Pods-FoodiesTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodiesTestApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodiesTestApp/Pods-FoodiesTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CD244FD05C5650E3DE42CAFC /* Pods_FoodiesTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodiesTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -73,8 +81,9 @@
 		84CEA3792A0D3109005A54D8 /* FoodiesTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				84CEA39C2A0E6BE9005A54D8 /* Constants */,
+				84CEA39B2A0E67FA005A54D8 /* Scenes */,
 				84CEA3932A0D3460005A54D8 /* Models */,
-				84CEA3922A0D3456005A54D8 /* Modules */,
 				84CEA38E2A0D3203005A54D8 /* Services */,
 				84CEA37A2A0D3109005A54D8 /* AppDelegate.swift */,
 				84CEA3832A0D310B005A54D8 /* Assets.xcassets */,
@@ -92,14 +101,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		84CEA3922A0D3456005A54D8 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				84CEA3942A0D3466005A54D8 /* SplashScreen */,
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
 		84CEA3932A0D3460005A54D8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,10 +112,37 @@
 			isa = PBXGroup;
 			children = (
 				84CEA3952A0D3487005A54D8 /* SplashScreenViewController.swift */,
-				84CEA3972A0D3496005A54D8 /* SplashScreenBuilder.swift */,
-				84CEA3992A0D34A3005A54D8 /* SplashScreenPresenter.swift */,
+				84CEA39F2A0E6C6A005A54D8 /* SplashScreenPresenter.swift */,
+				84CEA3A82A0E6E31005A54D8 /* SplashScreenBuilder.swift */,
 			);
 			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		84CEA39B2A0E67FA005A54D8 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				84CEA3A12A0E6D2E005A54D8 /* Catalog */,
+				84CEA3942A0D3466005A54D8 /* SplashScreen */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		84CEA39C2A0E6BE9005A54D8 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				84CEA39D2A0E6BF8005A54D8 /* SplashScreenConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		84CEA3A12A0E6D2E005A54D8 /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				84CEA3A22A0E6D4F005A54D8 /* CatalogViewController.swift */,
+				84CEA3A42A0E6D5E005A54D8 /* CatalogPresenter.swift */,
+				84CEA3A62A0E6D68005A54D8 /* CatalogBuilder.swift */,
+			);
+			path = Catalog;
 			sourceTree = "<group>";
 		};
 		DEFA292AB08E1CBB05131883 /* Pods */ = {
@@ -240,11 +268,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CEA3A32A0E6D4F005A54D8 /* CatalogViewController.swift in Sources */,
+				84CEA3A72A0E6D68005A54D8 /* CatalogBuilder.swift in Sources */,
+				84CEA3A92A0E6E31005A54D8 /* SplashScreenBuilder.swift in Sources */,
+				84CEA3A02A0E6C6A005A54D8 /* SplashScreenPresenter.swift in Sources */,
 				84CEA3902A0D3212005A54D8 /* StartService.swift in Sources */,
-				84CEA3982A0D3496005A54D8 /* SplashScreenBuilder.swift in Sources */,
 				84CEA3962A0D3487005A54D8 /* SplashScreenViewController.swift in Sources */,
+				84CEA39E2A0E6BF8005A54D8 /* SplashScreenConstants.swift in Sources */,
+				84CEA3A52A0E6D5E005A54D8 /* CatalogPresenter.swift in Sources */,
 				84CEA37B2A0D3109005A54D8 /* AppDelegate.swift in Sources */,
-				84CEA39A2A0D34A3005A54D8 /* SplashScreenPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

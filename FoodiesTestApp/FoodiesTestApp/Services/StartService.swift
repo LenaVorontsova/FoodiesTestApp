@@ -16,8 +16,9 @@ final class StartService {
     }
     
     func configureWindow() {
+        let presenter: SplashScreenPresenting = SplashScreenPresenter()
         if let win = window {
-            win.rootViewController = SplashScreenViewController()
+            win.rootViewController = SplashScreenBuilder.build(presenter: presenter)
             win.makeKeyAndVisible()
         }
     }
