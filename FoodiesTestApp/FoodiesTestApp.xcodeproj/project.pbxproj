@@ -19,6 +19,10 @@
 		84CEA3A52A0E6D5E005A54D8 /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3A42A0E6D5E005A54D8 /* CatalogPresenter.swift */; };
 		84CEA3A72A0E6D68005A54D8 /* CatalogBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3A62A0E6D68005A54D8 /* CatalogBuilder.swift */; };
 		84CEA3A92A0E6E31005A54D8 /* SplashScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3A82A0E6E31005A54D8 /* SplashScreenBuilder.swift */; };
+		84CEA3AC2A0E7A98005A54D8 /* Categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 84CEA3AB2A0E7A98005A54D8 /* Categories.json */; };
+		84CEA3AE2A0E7AC6005A54D8 /* Tags.json in Resources */ = {isa = PBXBuildFile; fileRef = 84CEA3AD2A0E7AC6005A54D8 /* Tags.json */; };
+		84CEA3B02A0E7AF3005A54D8 /* Products.json in Resources */ = {isa = PBXBuildFile; fileRef = 84CEA3AF2A0E7AF3005A54D8 /* Products.json */; };
+		84CEA3B22A0E7B21005A54D8 /* SplashScreenAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 84CEA3B12A0E7B21005A54D8 /* SplashScreenAnimation.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		84CEA3A42A0E6D5E005A54D8 /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
 		84CEA3A62A0E6D68005A54D8 /* CatalogBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogBuilder.swift; sourceTree = "<group>"; };
 		84CEA3A82A0E6E31005A54D8 /* SplashScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenBuilder.swift; sourceTree = "<group>"; };
+		84CEA3AB2A0E7A98005A54D8 /* Categories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Categories.json; sourceTree = "<group>"; };
+		84CEA3AD2A0E7AC6005A54D8 /* Tags.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Tags.json; sourceTree = "<group>"; };
+		84CEA3AF2A0E7AF3005A54D8 /* Products.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Products.json; sourceTree = "<group>"; };
+		84CEA3B12A0E7B21005A54D8 /* SplashScreenAnimation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SplashScreenAnimation.json; sourceTree = "<group>"; };
 		A63D4CAD8A3040BF3B0F99AB /* Pods-FoodiesTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodiesTestApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodiesTestApp/Pods-FoodiesTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CD244FD05C5650E3DE42CAFC /* Pods_FoodiesTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodiesTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -81,6 +89,7 @@
 		84CEA3792A0D3109005A54D8 /* FoodiesTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				84CEA3AA2A0E7A7B005A54D8 /* Jsons */,
 				84CEA39C2A0E6BE9005A54D8 /* Constants */,
 				84CEA39B2A0E67FA005A54D8 /* Scenes */,
 				84CEA3932A0D3460005A54D8 /* Models */,
@@ -143,6 +152,17 @@
 				84CEA3A62A0E6D68005A54D8 /* CatalogBuilder.swift */,
 			);
 			path = Catalog;
+			sourceTree = "<group>";
+		};
+		84CEA3AA2A0E7A7B005A54D8 /* Jsons */ = {
+			isa = PBXGroup;
+			children = (
+				84CEA3AB2A0E7A98005A54D8 /* Categories.json */,
+				84CEA3AD2A0E7AC6005A54D8 /* Tags.json */,
+				84CEA3AF2A0E7AF3005A54D8 /* Products.json */,
+				84CEA3B12A0E7B21005A54D8 /* SplashScreenAnimation.json */,
+			);
+			path = Jsons;
 			sourceTree = "<group>";
 		};
 		DEFA292AB08E1CBB05131883 /* Pods */ = {
@@ -214,8 +234,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CEA3AE2A0E7AC6005A54D8 /* Tags.json in Resources */,
+				84CEA3B22A0E7B21005A54D8 /* SplashScreenAnimation.json in Resources */,
+				84CEA3AC2A0E7A98005A54D8 /* Categories.json in Resources */,
 				84CEA3872A0D310B005A54D8 /* LaunchScreen.storyboard in Resources */,
 				84CEA3842A0D310B005A54D8 /* Assets.xcassets in Resources */,
+				84CEA3B02A0E7AF3005A54D8 /* Products.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
