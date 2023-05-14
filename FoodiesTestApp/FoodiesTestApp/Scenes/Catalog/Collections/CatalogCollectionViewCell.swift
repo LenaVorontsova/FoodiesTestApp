@@ -11,5 +11,70 @@ import SnapKit
 final class CatalogCollectionViewCell: UICollectionViewCell {
     static let collectionId = "CatalogCollectionViewCell"
     
+    lazy var productImage: UIImageView = {
+        var image = UIImageView()
+        image.image = UIImage(named: "productImage")
+        return image
+    }()
+    lazy var productName: UILabel = {
+        var label = UILabel()
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .black
+        label.numberOfLines = 2
+        return label
+    }()
+    lazy var productMeasure: UILabel = {
+        var label = UILabel()
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .lightGray
+        return label
+    }()
+    lazy var productPriceButton: UIButton = {
+        var button = UIButton()
+        button.backgroundColor = .white
+        button.titleLabel?.textColor = .black
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        button.layer.cornerRadius = 8
+        return button
+    }()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI() {
+        contentView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
+        contentView.layer.cornerRadius =  8
+        contentView.layer.masksToBounds = true
+            
+        configureContstrains()
+    }
+    
+    private func configureContstrains() {
+        contentView.addSubview(productImage)
+        contentView.addSubview(productName)
+        contentView.addSubview(productMeasure)
+        contentView.addSubview(productPriceButton)
+        productImage.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+        }
+        productName.snp.makeConstraints {
+            $0.top.equalTo(productImage.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(12)
+        }
+        productMeasure.snp.makeConstraints {
+            $0.top.equalTo(productName.snp.bottom).offset(4)
+            $0.leading.trailing.equalToSuperview().inset(12)
+        }
+        productPriceButton.snp.makeConstraints {
+            $0.top.equalTo(productMeasure.snp.bottom).offset(12)
+            $0.leading.trailing.equalToSuperview().inset(12)
+            $0.bottom.equalToSuperview().inset(12)
+        }
+    }
 }
