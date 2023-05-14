@@ -14,27 +14,29 @@ final class CatalogCollectionViewCell: UICollectionViewCell {
     lazy var productImage: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "productImage")
+        image.contentMode = .scaleToFill
         return image
     }()
     lazy var productName: UILabel = {
         var label = UILabel()
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 12)
         label.textColor = .black
         label.numberOfLines = 2
         return label
     }()
     lazy var productMeasure: UILabel = {
         var label = UILabel()
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: 12)
         label.textColor = .lightGray
         return label
     }()
     lazy var productPriceButton: UIButton = {
         var button = UIButton()
         button.backgroundColor = .white
-        button.titleLabel?.textColor = .black
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 8
+//        button.setTitle("000", for: .normal)
+        button.setTitleColor(.black, for: .normal)
         return button
     }()
     
@@ -62,6 +64,7 @@ final class CatalogCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(productPriceButton)
         productImage.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(120)
         }
         productName.snp.makeConstraints {
             $0.top.equalTo(productImage.snp.bottom).offset(12)
@@ -72,6 +75,8 @@ final class CatalogCollectionViewCell: UICollectionViewCell {
             $0.leading.trailing.equalToSuperview().inset(12)
         }
         productPriceButton.snp.makeConstraints {
+            $0.width.equalTo(143)
+            $0.height.equalTo(40)
             $0.top.equalTo(productMeasure.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview().inset(12)
             $0.bottom.equalToSuperview().inset(12)

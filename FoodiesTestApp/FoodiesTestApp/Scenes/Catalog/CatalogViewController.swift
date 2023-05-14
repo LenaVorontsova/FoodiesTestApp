@@ -36,6 +36,13 @@ final class CatalogViewController: UIViewController {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
+    private var catalogCollectionView: UICollectionView = {
+        let viewLayout = UICollectionViewFlowLayout()
+        viewLayout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
     let numberOfItems = 1000
     private let presenter: CatalogPresenting
     
@@ -69,6 +76,9 @@ final class CatalogViewController: UIViewController {
         
         let indexPathCat = IndexPath(row: categoriesCollectionView.numberOfSections, section: 0)
         self.categoriesCollectionView.scrollToItem(at: indexPathCat, at: .left, animated: false)
+        
+        let indexPathCatalog = IndexPath(row: catalogCollectionView.numberOfSections, section: 0)
+        self.catalogCollectionView.scrollToItem(at: indexPathCatalog, at: .bottom, animated: false)
     }
     
     private func setupViews() {
@@ -77,14 +87,26 @@ final class CatalogViewController: UIViewController {
         self.categoriesCollectionView.delegate = self
         self.categoriesCollectionView.register(CategoriesCollectionViewCell.self,
                                                forCellWithReuseIdentifier: CategoriesCollectionViewCell.collectionId)
+        
+        self.catalogCollectionView.showsVerticalScrollIndicator = true
+        self.catalogCollectionView.dataSource = self
+        self.catalogCollectionView.delegate = self
+        self.catalogCollectionView.register(CatalogCollectionViewCell.self,
+                                               forCellWithReuseIdentifier: CatalogCollectionViewCell.collectionId)
     }
     
     private func configureConstraints() {
         view.addSubview(categoriesCollectionView)
+        view.addSubview(catalogCollectionView)
         categoriesCollectionView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(8)
             $0.leading.trailing.equalToSuperview().inset(CategoriesCellConstants.insets)
             $0.bottom.equalToSuperview().inset(672)
+        }
+        catalogCollectionView.snp.makeConstraints {
+            $0.top.equalTo(categoriesCollectionView.safeAreaLayoutGuide.snp.bottom).offset(16)
+            $0.leading.trailing.equalToSuperview().inset(CategoriesCellConstants.insets)
+            $0.bottom.equalToSuperview()
         }
     }
 }
@@ -98,32 +120,51 @@ extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataS
 //    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.categories.count
+        if collectionView.isEqual(categoriesCollectionView) {
+            return presenter.categories.count
+        } else {
+            return presenter.products.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: CategoriesCollectionViewCell.collectionId,
-            for: indexPath) as? CategoriesCollectionViewCell else {
-            return UICollectionViewCell()
+        if collectionView.isEqual(categoriesCollectionView) {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CategoriesCollectionViewCell.collectionId,
+                for: indexPath) as? CategoriesCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            if presenter.categories.count != 0 {
+                cell.collectionLabel.text = presenter.categories[indexPath.row].name
+            }
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CatalogCollectionViewCell.collectionId,
+                for: indexPath) as? CatalogCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            if presenter.products.count != 0 {
+                cell.productName.text = presenter.products[indexPath.row].name
+                cell.productMeasure.text = "\(presenter.products[indexPath.row].measure) \(presenter.products[indexPath.row].measure_unit)"
+                cell.productPriceButton.setTitle("\(presenter.products[indexPath.row].price_current/100) ₽", for: .normal)
+            }
+            return cell
         }
-        if presenter.categories.count != 0 {
-            cell.collectionLabel.text = presenter.categories[indexPath.row].name
-        }
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let item = presenter.categories[indexPath.row % presenter.categories.count].name
-        let font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        let itemSize = item.size(withAttributes: [.font: font])
-        let size = CGSize(
-            width: itemSize.width.rounded(.up) + 24 + 24,
-            height: itemSize.height.rounded(.up) + 12 + 12
-        )
-                return size
-//        return CGSize(
-//            width: 83,
-//            height: 40)
+        if collectionView.isEqual(categoriesCollectionView) {
+            let item = presenter.categories[indexPath.row % presenter.categories.count].name
+            let font = UIFont.systemFont(ofSize: 14, weight: .medium)
+            let itemSize = item.size(withAttributes: [.font: font])
+            let size = CGSize(
+                width: itemSize.width.rounded(.up) + 24 + 24,
+                height: itemSize.height.rounded(.up) + 12 + 12
+            )
+            return size
+        } else {
+            return CGSize(width: 167.5, height: 290)
+        }
     }
 }

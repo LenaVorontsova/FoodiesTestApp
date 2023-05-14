@@ -9,21 +9,27 @@ import UIKit
 
 protocol CatalogPresenting {
     var categories: [Category] { get set }
+    var products: [Product] {get set }
     var selectedCategory: String { get set }
     func loadData()
 }
 
 final class CatalogPresenter: CatalogPresenting {
-    private var categoriesTest: [Category] = []
     var categories = [Category]()
+    var products = [Product]()
     var selectedCategory: String = ""
     weak var controller: UIViewController?
     
     func loadData() {
         self.getInfoCategories()
+        self.getInfoProducts()
     }
     
     private func getInfoCategories() {
-        categories = Category.previewData
+        self.categories = Category.previewData
+    }
+    
+    private func getInfoProducts() {
+        self.products = Product.previewData
     }
 }
