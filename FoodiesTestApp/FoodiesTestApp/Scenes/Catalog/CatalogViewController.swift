@@ -82,9 +82,9 @@ final class CatalogViewController: UIViewController {
     private func configureConstraints() {
         view.addSubview(categoriesCollectionView)
         categoriesCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview().inset(CategoriesCellConstants.insets)
-            $0.bottom.equalToSuperview().inset(500)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(8)
+            $0.leading.trailing.equalToSuperview().inset(CategoriesCellConstants.insets)
+            $0.bottom.equalToSuperview().inset(672)
         }
     }
 }
@@ -98,7 +98,7 @@ extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataS
 //    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfItems
+        return presenter.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -108,14 +108,22 @@ extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataS
             return UICollectionViewCell()
         }
         if presenter.categories.count != 0 {
-            cell.collectionLabel.text = presenter.categories[indexPath.row % presenter.categories.count].name
+            cell.collectionLabel.text = presenter.categories[indexPath.row].name
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(
-            width: 83,
-            height: 40)
+        let item = presenter.categories[indexPath.row % presenter.categories.count].name
+        let font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        let itemSize = item.size(withAttributes: [.font: font])
+        let size = CGSize(
+            width: itemSize.width.rounded(.up) + 24 + 24,
+            height: itemSize.height.rounded(.up) + 12 + 12
+        )
+                return size
+//        return CGSize(
+//            width: 83,
+//            height: 40)
     }
 }

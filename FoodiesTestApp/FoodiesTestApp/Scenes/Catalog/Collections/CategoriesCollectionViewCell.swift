@@ -14,22 +14,15 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
     lazy var collectionLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .white
+        label.textColor = .black
+        label.numberOfLines = 2
         return label
     }()
     
     override var isSelected: Bool {
         didSet {
-            self.contentView.backgroundColor = isSelected ? UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.2) : .clear
-            self.collectionLabel.textColor = isSelected ? UIColor(
-                    red: 0.992,
-                    green: 0.227,
-                    blue: 0.412,
-                    alpha: 1) : UIColor(
-                        red: 0.992,
-                        green: 0.227,
-                        blue: 0.412,
-                        alpha: 0.4)
+            self.contentView.backgroundColor = isSelected ? UIColor(red: 0.945, green: 0.329, blue: 0.071, alpha: 1) : .clear
+            self.collectionLabel.textColor = isSelected ? .white : .black
         }
     }
     
@@ -54,7 +47,7 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         addSubview(collectionLabel)
         collectionLabel.snp.makeConstraints {
             $0.top.bottom.equalToSuperview().inset(CategoriesCellConstants.topAndBottom)
-            $0.leading.trailing.equalToSuperview().inset(CategoriesCellConstants.insets)
+            $0.leading.trailing.equalToSuperview().inset(CategoriesCellConstants.insets-3)
         }
     }
 }
