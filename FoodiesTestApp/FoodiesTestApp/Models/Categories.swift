@@ -20,10 +20,6 @@ extension Category {
 //        jsonDecoder.dateDecodingStrategy = .iso8601
         
         let apiResponse = try! jsonDecoder.decode([Category].self, from: data)
-        return apiResponse 
+        return apiResponse
     }
-}
-
-struct CategoriesAPIResponse: Codable {
-    let categories: [Category]?
 }
