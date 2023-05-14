@@ -10,15 +10,18 @@ import UIKit
 protocol CatalogPresenting {
     var categories: [Category] { get set }
     var products: [Product] {get set }
-    var selectedCategory: String { get set }
+    var productsFilter: [Product] {get set }
+    var selectedCategory: Int? { get set }
     func loadData()
+    func updateSelectedCategory()
 }
 
 final class CatalogPresenter: CatalogPresenting {
     var categories = [Category]()
+    var productsFilter = [Product]()
     var products = [Product]()
-    var selectedCategory: String = ""
-    weak var controller: UIViewController?
+    var selectedCategory: Int?
+    weak var controller: CatalogViewController?
     
     func loadData() {
         self.getInfoCategories()
@@ -31,5 +34,14 @@ final class CatalogPresenter: CatalogPresenting {
     
     private func getInfoProducts() {
         self.products = Product.previewData
+        self.productsFilter = self.products
+    }
+    
+    func updateSelectedCategory() {
+        if let categoryId = selectedCategory {
+            productsFilter = products.filter( { $0.category_id == categoryId})
+        } else {
+            productsFilter = products
+        }
     }
 }

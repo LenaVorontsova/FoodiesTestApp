@@ -8,8 +8,6 @@
 import UIKit
 import SnapKit
 
-var whichCellSelect : String = ""
-
 final class CatalogViewController: UIViewController {
     private var logoImageView: UIImageView = {
         let image = UIImageView()
@@ -44,7 +42,7 @@ final class CatalogViewController: UIViewController {
         return collectionView
     }()
     let numberOfItems = 1000
-    private let presenter: CatalogPresenting
+    private var presenter: CatalogPresenting
     
     init(presenter: CatalogPresenting) {
         self.presenter = presenter
@@ -109,21 +107,27 @@ final class CatalogViewController: UIViewController {
             $0.bottom.equalToSuperview()
         }
     }
+    
+    func reloadData() {
+//        self.categoriesCollectionView.reloadData()
+        self.catalogCollectionView.reloadData()
+    }
 }
 
 extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//            if collectionView.isEqual(categoriesCollectionView) {
-//                whichCellSelect = presenter.categories[indexPath.row % presenter.categories.count].strCategory
-//                presenter.updateSelectedCategory(whichCellSelect)
-//            }
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.isEqual(categoriesCollectionView) {
+            presenter.selectedCategory = presenter.categories[indexPath.row].id
+            presenter.updateSelectedCategory()
+            reloadData()
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.isEqual(categoriesCollectionView) {
             return presenter.categories.count
         } else {
-            return presenter.products.count
+            return presenter.productsFilter.count
         }
     }
     
@@ -145,9 +149,9 @@ extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataS
                 return UICollectionViewCell()
             }
             if presenter.products.count != 0 {
-                cell.productName.text = presenter.products[indexPath.row].name
-                cell.productMeasure.text = "\(presenter.products[indexPath.row].measure) \(presenter.products[indexPath.row].measure_unit)"
-                cell.productPriceButton.setTitle("\(presenter.products[indexPath.row].price_current/100) ₽", for: .normal)
+                cell.productName.text = presenter.productsFilter[indexPath.row].name
+                cell.productMeasure.text = "\(presenter.productsFilter[indexPath.row].measure) \(presenter.productsFilter[indexPath.row].measure_unit)"
+                cell.productPriceButton.setTitle("\(presenter.productsFilter[indexPath.row].price_current/100) ₽", for: .normal)
             }
             return cell
         }
