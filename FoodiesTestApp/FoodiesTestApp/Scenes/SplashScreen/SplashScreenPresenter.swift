@@ -16,7 +16,8 @@ final class SplashScreenPresenter: SplashScreenPresenting {
     weak var splashScreenVC: UIViewController?
     
     func showCatalogScreen() {
-        let catalogVC = CatalogViewController()
+        let presenter: CatalogPresenting = CatalogPresenter()
+        let catalogVC = CatalogViewController(presenter: presenter)
         catalogVC.modalPresentationStyle = .fullScreen
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
             self.splashScreenVC?.navigationController?.pushViewController(catalogVC, animated: false)
