@@ -35,7 +35,6 @@ final class CatalogCollectionViewCell: UICollectionViewCell {
         button.backgroundColor = .white
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 8
-//        button.setTitle("000", for: .normal)
         button.setTitleColor(.black, for: .normal)
         return button
     }()
@@ -56,7 +55,6 @@ final class CatalogCollectionViewCell: UICollectionViewCell {
             
         configureContstrains()
     }
-    
     private func configureContstrains() {
         contentView.addSubview(productImage)
         contentView.addSubview(productName)

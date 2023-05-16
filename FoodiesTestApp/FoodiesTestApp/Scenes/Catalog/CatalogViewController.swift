@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+var priceSum = 0
 final class CatalogViewController: UIViewController {
     private var logoImageView: UIImageView = {
         let image = UIImageView()
@@ -41,6 +42,18 @@ final class CatalogViewController: UIViewController {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
+    var cartView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.isHidden = true
+        return view
+    }()
+    var cartButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(red: 0.945, green: 0.329, blue: 0.071, alpha: 1)
+        button.layer.cornerRadius = 8
+        return button
+    }()
     let numberOfItems = 1000
     private var presenter: CatalogPresenting
     
@@ -67,6 +80,8 @@ final class CatalogViewController: UIViewController {
         self.setupViews()
         self.configureConstraints()
         self.presenter.loadData()
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,21 +111,43 @@ final class CatalogViewController: UIViewController {
     private func configureConstraints() {
         view.addSubview(categoriesCollectionView)
         view.addSubview(catalogCollectionView)
+        view.addSubview(cartView)
+        cartView.addSubview(cartButton)
         categoriesCollectionView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(8)
             $0.leading.trailing.equalToSuperview().inset(CategoriesCellConstants.insets)
             $0.bottom.equalToSuperview().inset(672)
         }
         catalogCollectionView.snp.makeConstraints {
-            $0.top.equalTo(categoriesCollectionView.safeAreaLayoutGuide.snp.bottom).offset(16)
+            $0.top.equalTo(categoriesCollectionView.safeAreaLayoutGuide.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview().inset(CategoriesCellConstants.insets)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(12)
+        }
+        cartView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(740)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(12)
+        }
+        cartButton.snp.makeConstraints {
+            $0.width.equalTo(343)
+            $0.height.equalTo(48)
+            $0.top.bottom.equalToSuperview().inset(12)
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
     }
     
     func reloadData() {
-//        self.categoriesCollectionView.reloadData()
         self.catalogCollectionView.reloadData()
+    }
+    
+    @objc
+    func addProductToCart() {
+        if cartView.isHidden {
+            cartView.isHidden = false
+        } else {
+            cartView.isHidden = true
+        }
+        cartButton.setTitle("\(priceSum)", for: .normal)
     }
 }
 
@@ -121,12 +158,8 @@ extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataS
             presenter.updateSelectedCategory()
             reloadData()
         } else {
-//            let presenterProduct = ProductCardPresenter()
-//            let productCardVC = ProductCardViewController(presenter: presenterProduct,
-//                                                          product: presenter.products[indexPath.row])
             let productCardVC = ProductCardTableViewController(product: presenter.products[indexPath.row])
             productCardVC.modalPresentationStyle = .fullScreen
-            print("Cell \(indexPath.row + 1) clicked")
             self.navigationController?.pushViewController(productCardVC, animated: true)
         }
     }
@@ -160,6 +193,7 @@ extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataS
                 cell.productName.text = presenter.productsFilter[indexPath.row].name
                 cell.productMeasure.text = "\(presenter.productsFilter[indexPath.row].measure) \(presenter.productsFilter[indexPath.row].measure_unit)"
                 cell.productPriceButton.setTitle("\(presenter.productsFilter[indexPath.row].price_current/100) ₽", for: .normal)
+                cell.productPriceButton.addTarget(self, action: #selector(addProductToCart), for: .touchUpInside)
             }
             return cell
         }
