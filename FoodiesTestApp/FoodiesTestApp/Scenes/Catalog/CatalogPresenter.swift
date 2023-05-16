@@ -9,7 +9,7 @@ import UIKit
 
 protocol CatalogPresenting {
     var categories: [Category] { get set }
-    var products: [Product] {get set }
+    var products: [Product] { get set }
     var productsFilter: [Product] {get set }
     var selectedCategory: Int? { get set }
     func loadData()

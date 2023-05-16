@@ -64,8 +64,8 @@ final class CatalogViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: searchImageView.image, style: .plain, target: nil, action: nil)
         self.navigationItem.rightBarButtonItem?.tintColor = .black
         
-        setupViews()
-        configureConstraints()
+        self.setupViews()
+        self.configureConstraints()
         self.presenter.loadData()
     }
     
@@ -120,6 +120,14 @@ extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataS
             presenter.selectedCategory = presenter.categories[indexPath.row].id
             presenter.updateSelectedCategory()
             reloadData()
+        } else {
+//            let presenterProduct = ProductCardPresenter()
+//            let productCardVC = ProductCardViewController(presenter: presenterProduct,
+//                                                          product: presenter.products[indexPath.row])
+            let productCardVC = ProductCardTableViewController(product: presenter.products[indexPath.row])
+            productCardVC.modalPresentationStyle = .fullScreen
+            print("Cell \(indexPath.row + 1) clicked")
+            self.navigationController?.pushViewController(productCardVC, animated: true)
         }
     }
     

@@ -28,6 +28,8 @@
 		84CEA3BF2A10CF9D005A54D8 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3BE2A10CF9D005A54D8 /* Categories.swift */; };
 		84CEA3C22A10E515005A54D8 /* CatalogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3C12A10E515005A54D8 /* CatalogCollectionViewCell.swift */; };
 		84CEA3C42A10E570005A54D8 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3C32A10E570005A54D8 /* Products.swift */; };
+		84CEA3CE2A139821005A54D8 /* ProductCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3CD2A139821005A54D8 /* ProductCardTableViewController.swift */; };
+		84CEA3D02A13987D005A54D8 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3CF2A13987D005A54D8 /* InfoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		84CEA3BE2A10CF9D005A54D8 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		84CEA3C12A10E515005A54D8 /* CatalogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCollectionViewCell.swift; sourceTree = "<group>"; };
 		84CEA3C32A10E570005A54D8 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		84CEA3CD2A139821005A54D8 /* ProductCardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardTableViewController.swift; sourceTree = "<group>"; };
+		84CEA3CF2A13987D005A54D8 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		A63D4CAD8A3040BF3B0F99AB /* Pods-FoodiesTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodiesTestApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodiesTestApp/Pods-FoodiesTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CD244FD05C5650E3DE42CAFC /* Pods_FoodiesTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodiesTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -160,6 +164,7 @@
 		84CEA3A12A0E6D2E005A54D8 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				84CEA3C52A12AAAC005A54D8 /* ProductCard */,
 				84CEA3B62A0E7D4D005A54D8 /* Collections */,
 				84CEA3A22A0E6D4F005A54D8 /* CatalogViewController.swift */,
 				84CEA3A42A0E6D5E005A54D8 /* CatalogPresenter.swift */,
@@ -186,6 +191,15 @@
 				84CEA3C12A10E515005A54D8 /* CatalogCollectionViewCell.swift */,
 			);
 			path = Collections;
+			sourceTree = "<group>";
+		};
+		84CEA3C52A12AAAC005A54D8 /* ProductCard */ = {
+			isa = PBXGroup;
+			children = (
+				84CEA3CD2A139821005A54D8 /* ProductCardTableViewController.swift */,
+				84CEA3CF2A13987D005A54D8 /* InfoTableViewCell.swift */,
+			);
+			path = ProductCard;
 			sourceTree = "<group>";
 		};
 		DEFA292AB08E1CBB05131883 /* Pods */ = {
@@ -322,6 +336,8 @@
 				84CEA3A02A0E6C6A005A54D8 /* SplashScreenPresenter.swift in Sources */,
 				84CEA3B92A0E7D93005A54D8 /* CategoriesCollectionViewCell.swift in Sources */,
 				84CEA3BF2A10CF9D005A54D8 /* Categories.swift in Sources */,
+				84CEA3CE2A139821005A54D8 /* ProductCardTableViewController.swift in Sources */,
+				84CEA3D02A13987D005A54D8 /* InfoTableViewCell.swift in Sources */,
 				84CEA3902A0D3212005A54D8 /* StartService.swift in Sources */,
 				84CEA3BD2A0E7E55005A54D8 /* CategoriesConstants.swift in Sources */,
 				84CEA3962A0D3487005A54D8 /* SplashScreenViewController.swift in Sources */,
