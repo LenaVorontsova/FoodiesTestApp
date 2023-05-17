@@ -38,6 +38,7 @@ final class CatalogCollectionViewCell: UICollectionViewCell {
         button.setTitleColor(.black, for: .normal)
         return button
     }()
+    var isTupped = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -80,4 +81,5 @@ final class CatalogCollectionViewCell: UICollectionViewCell {
             $0.bottom.equalToSuperview().inset(12)
         }
     }
+    
 }

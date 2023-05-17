@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-var priceSum = 0
 final class CatalogViewController: UIViewController {
     private var logoImageView: UIImageView = {
         let image = UIImageView()
@@ -56,6 +55,7 @@ final class CatalogViewController: UIViewController {
     }()
     let numberOfItems = 1000
     private var presenter: CatalogPresenting
+    var totalProductPrice = 0
     
     init(presenter: CatalogPresenting) {
         self.presenter = presenter
@@ -80,8 +80,6 @@ final class CatalogViewController: UIViewController {
         self.setupViews()
         self.configureConstraints()
         self.presenter.loadData()
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -124,7 +122,7 @@ final class CatalogViewController: UIViewController {
             $0.bottom.equalToSuperview().inset(12)
         }
         cartView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(740)
+            $0.top.equalToSuperview().inset(760)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(12)
         }
@@ -141,13 +139,23 @@ final class CatalogViewController: UIViewController {
     }
     
     @objc
-    func addProductToCart() {
-        if cartView.isHidden {
-            cartView.isHidden = false
-        } else {
+    func deleteProductFromCart(_ sender: UIButton) {
+        let indexPath = IndexPath(item: sender.tag, section: 0)
+        let product = presenter.productsFilter[indexPath.item]
+        totalProductPrice -= Int(product.price_current/100)
+        cartButton.setTitle("\(totalProductPrice) ₽", for: .normal)
+        if totalProductPrice == 0 {
             cartView.isHidden = true
         }
-        cartButton.setTitle("\(priceSum)", for: .normal)
+    }
+    
+    @objc
+    func addProductToCart(_ sender: UIButton) {
+        let indexPath = IndexPath(item: sender.tag, section: 0)
+        let product = presenter.productsFilter[indexPath.item]
+        totalProductPrice += Int(product.price_current/100)
+        cartView.isHidden = false
+        cartButton.setTitle("\(totalProductPrice) ₽", for: .normal)
     }
 }
 
