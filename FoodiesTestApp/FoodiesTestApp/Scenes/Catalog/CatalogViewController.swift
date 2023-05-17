@@ -51,6 +51,7 @@ final class CatalogViewController: UIViewController {
         let button = UIButton()
         button.backgroundColor = UIColor(red: 0.945, green: 0.329, blue: 0.071, alpha: 1)
         button.layer.cornerRadius = 8
+        button.setImage(UIImage(named: "cartIcon"), for: .normal)
         return button
     }()
     let numberOfItems = 1000
