@@ -71,7 +71,7 @@ final class CartTableViewCell: UITableViewCell {
         productPrice.snp.makeConstraints {
             $0.top.equalToSuperview().inset(CartConstants.productPriceTop)
             $0.leading.equalTo(productCount.safeAreaLayoutGuide.snp.trailing).offset(CartConstants.productPriceLead)
-            $0.trailing.equalToSuperview().inset(CartConstants.productPriceTrail)
+//            $0.trailing.equalToSuperview().inset(CartConstants.productPriceTrail)
             $0.bottom.equalToSuperview().inset(CartConstants.productCountBottom)
         }
     }

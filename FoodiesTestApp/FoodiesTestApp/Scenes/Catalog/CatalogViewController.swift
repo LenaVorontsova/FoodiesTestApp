@@ -57,7 +57,7 @@ final class CatalogViewController: UIViewController {
     let numberOfItems = 1000
     private var presenter: CatalogPresenting
     var totalProductPrice = 0
-    var productsInCart: [Product] = []
+    var productsInCart: [Product] = [Product]()
     
     init(presenter: CatalogPresenting) {
         self.presenter = presenter
@@ -167,7 +167,7 @@ final class CatalogViewController: UIViewController {
         totalProductPrice += product.price_current/100
         cartView.isHidden = false
         cartButton.setTitle("\(totalProductPrice) ₽", for: .normal)
-        productsInCart.append(presenter.productsFilter[indexPath.item])
+        productsInCart.append(product)
     }
 }
 
