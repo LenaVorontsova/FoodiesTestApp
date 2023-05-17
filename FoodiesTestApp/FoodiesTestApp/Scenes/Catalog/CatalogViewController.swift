@@ -41,13 +41,13 @@ final class CatalogViewController: UIViewController {
         collectionView.backgroundColor = .clear
         return collectionView
     }()
-    var cartView: UIView = {
+    private var cartView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.isHidden = true
         return view
     }()
-    var cartButton: UIButton = {
+    private var cartButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(red: 0.945, green: 0.329, blue: 0.071, alpha: 1)
         button.layer.cornerRadius = 8
@@ -57,6 +57,7 @@ final class CatalogViewController: UIViewController {
     let numberOfItems = 1000
     private var presenter: CatalogPresenting
     var totalProductPrice = 0
+    var productsInCart: [Product] = []
     
     init(presenter: CatalogPresenting) {
         self.presenter = presenter
@@ -81,6 +82,8 @@ final class CatalogViewController: UIViewController {
         self.setupViews()
         self.configureConstraints()
         self.presenter.loadData()
+        
+        cartButton.addTarget(self, action: #selector(openCart), for: .touchUpInside)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,30 +116,37 @@ final class CatalogViewController: UIViewController {
         view.addSubview(cartView)
         cartView.addSubview(cartButton)
         categoriesCollectionView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(8)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(CatalogConstants.categoriesTop)
             $0.leading.trailing.equalToSuperview().inset(CategoriesCellConstants.insets)
-            $0.bottom.equalToSuperview().inset(672)
+            $0.bottom.equalToSuperview().inset(CatalogConstants.catalogBottom)
         }
         catalogCollectionView.snp.makeConstraints {
-            $0.top.equalTo(categoriesCollectionView.safeAreaLayoutGuide.snp.bottom).offset(8)
+            $0.top.equalTo(categoriesCollectionView.safeAreaLayoutGuide.snp.bottom).offset(CatalogConstants.categoriesTop)
             $0.leading.trailing.equalToSuperview().inset(CategoriesCellConstants.insets)
-            $0.bottom.equalToSuperview().inset(12)
+            $0.bottom.equalToSuperview().inset(CatalogConstants.catalogBottom)
         }
         cartView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(760)
+            $0.top.equalToSuperview().inset(CatalogConstants.cartViewTop)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(12)
+            $0.bottom.equalToSuperview().inset(CatalogConstants.catalogBottom)
         }
         cartButton.snp.makeConstraints {
-            $0.width.equalTo(343)
-            $0.height.equalTo(48)
-            $0.top.bottom.equalToSuperview().inset(12)
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.width.equalTo(CatalogConstants.cartButtonWidth)
+            $0.height.equalTo(CatalogConstants.cartButtonHeight)
+            $0.top.bottom.equalToSuperview().inset(CatalogConstants.catalogBottom)
+            $0.leading.trailing.equalToSuperview().inset(CatalogConstants.cartButtonInsets)
         }
     }
     
     func reloadData() {
         self.catalogCollectionView.reloadData()
+    }
+    
+    @objc
+    func openCart(_ sender: UIButton) {
+        let productCartVC = ProductCartViewController(products: productsInCart)
+        productCartVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(productCartVC, animated: true)
     }
     
     @objc
@@ -154,9 +164,10 @@ final class CatalogViewController: UIViewController {
     func addProductToCart(_ sender: UIButton) {
         let indexPath = IndexPath(item: sender.tag, section: 0)
         let product = presenter.productsFilter[indexPath.item]
-        totalProductPrice += Int(product.price_current/100)
+        totalProductPrice += product.price_current/100
         cartView.isHidden = false
         cartButton.setTitle("\(totalProductPrice) ₽", for: .normal)
+        productsInCart.append(presenter.productsFilter[indexPath.item])
     }
 }
 

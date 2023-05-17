@@ -84,28 +84,28 @@ final class ProductCardTableViewController: UIViewController {
             $0.top.leading.trailing.equalToSuperview()
         }
         productName.snp.makeConstraints {
-            $0.top.equalTo(productImage.safeAreaLayoutGuide.snp.bottom).offset(24)
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.top.equalTo(productImage.safeAreaLayoutGuide.snp.bottom).offset(ProductCardConstants.productNameTop)
+            $0.leading.trailing.equalToSuperview().inset(ProductCardConstants.productNameLead)
         }
         productDescription.snp.makeConstraints {
-            $0.top.equalTo(productName.safeAreaLayoutGuide.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.top.equalTo(productName.safeAreaLayoutGuide.snp.bottom).offset(ProductCardConstants.productDescriptionTop)
+            $0.leading.trailing.equalToSuperview().inset(ProductCardConstants.productNameLead)
         }
         infoTableView.snp.makeConstraints {
-            $0.top.equalTo(productDescription.safeAreaLayoutGuide.snp.bottom).offset(30)
+            $0.top.equalTo(productDescription.safeAreaLayoutGuide.snp.bottom).offset(ProductCardConstants.infoTableViewTop)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(backgroundView.safeAreaLayoutGuide.snp.top).offset(0)
+            $0.bottom.equalTo(backgroundView.safeAreaLayoutGuide.snp.top)
         }
         backgroundView.snp.makeConstraints {
-            $0.top.equalTo(infoTableView.safeAreaLayoutGuide.snp.bottom).offset(0)
+            $0.top.equalTo(infoTableView.safeAreaLayoutGuide.snp.bottom)
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-5)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-ProductCardConstants.backgroundViewBottom)
         }
         cartButton.snp.makeConstraints {
-            $0.width.equalTo(343)
-            $0.height.equalTo(48)
-            $0.top.bottom.equalToSuperview().inset(12)
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.width.equalTo(ProductCardConstants.cartButtonWidth)
+            $0.height.equalTo(ProductCardConstants.cartButtonHeight)
+            $0.top.bottom.equalToSuperview().inset(ProductCardConstants.cartButtonTop)
+            $0.leading.trailing.equalToSuperview().inset(ProductCardConstants.productNameLead)
         }
     }
 }

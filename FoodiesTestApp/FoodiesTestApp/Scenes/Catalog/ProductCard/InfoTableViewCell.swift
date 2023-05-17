@@ -22,6 +22,7 @@ final class InfoTableViewCell: UITableViewCell {
         label.textColor = .gray
         return label
     }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .white
@@ -36,14 +37,14 @@ final class InfoTableViewCell: UITableViewCell {
         contentView.addSubview(labelText)
         contentView.addSubview(productData)
         labelText.snp.makeConstraints { 
-            $0.top.bottom.equalToSuperview().inset(13)
-            $0.leading.equalToSuperview().inset(16)
-            $0.trailing.equalToSuperview().inset(105)
+            $0.top.bottom.equalToSuperview().inset(InfoCellConstants.labelTextTop)
+            $0.leading.equalToSuperview().inset(InfoCellConstants.labelTextLead)
+            $0.trailing.equalToSuperview().inset(InfoCellConstants.labelTextTrail)
         }
         productData.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview().inset(13)
-            $0.leading.equalTo(labelText.safeAreaLayoutGuide.snp.trailing).offset(-8)
-            $0.trailing.equalToSuperview().inset(16)
+            $0.top.bottom.equalToSuperview().inset(InfoCellConstants.labelTextTop)
+            $0.leading.equalTo(labelText.safeAreaLayoutGuide.snp.trailing).offset(-InfoCellConstants.productDataLead)
+            $0.trailing.equalToSuperview().inset(InfoCellConstants.labelTextLead)
         }
     }
 }

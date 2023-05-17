@@ -30,6 +30,9 @@
 		84CEA3C42A10E570005A54D8 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3C32A10E570005A54D8 /* Products.swift */; };
 		84CEA3CE2A139821005A54D8 /* ProductCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3CD2A139821005A54D8 /* ProductCardTableViewController.swift */; };
 		84CEA3D02A13987D005A54D8 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3CF2A13987D005A54D8 /* InfoTableViewCell.swift */; };
+		84CEA3D32A15550C005A54D8 /* ProductCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3D22A15550C005A54D8 /* ProductCartViewController.swift */; };
+		84CEA3D52A155605005A54D8 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3D42A155605005A54D8 /* CartTableViewCell.swift */; };
+		84CEA3D92A155EC1005A54D8 /* CatalogConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CEA3D82A155EC1005A54D8 /* CatalogConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,9 @@
 		84CEA3C32A10E570005A54D8 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		84CEA3CD2A139821005A54D8 /* ProductCardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardTableViewController.swift; sourceTree = "<group>"; };
 		84CEA3CF2A13987D005A54D8 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		84CEA3D22A15550C005A54D8 /* ProductCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCartViewController.swift; sourceTree = "<group>"; };
+		84CEA3D42A155605005A54D8 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		84CEA3D82A155EC1005A54D8 /* CatalogConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogConstants.swift; sourceTree = "<group>"; };
 		A63D4CAD8A3040BF3B0F99AB /* Pods-FoodiesTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodiesTestApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodiesTestApp/Pods-FoodiesTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CD244FD05C5650E3DE42CAFC /* Pods_FoodiesTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodiesTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -157,6 +163,7 @@
 			children = (
 				84CEA39D2A0E6BF8005A54D8 /* SplashScreenConstants.swift */,
 				84CEA3BC2A0E7E55005A54D8 /* CategoriesConstants.swift */,
+				84CEA3D82A155EC1005A54D8 /* CatalogConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -164,6 +171,7 @@
 		84CEA3A12A0E6D2E005A54D8 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				84CEA3D12A1554FA005A54D8 /* ProductCart */,
 				84CEA3C52A12AAAC005A54D8 /* ProductCard */,
 				84CEA3B62A0E7D4D005A54D8 /* Collections */,
 				84CEA3A22A0E6D4F005A54D8 /* CatalogViewController.swift */,
@@ -200,6 +208,15 @@
 				84CEA3CF2A13987D005A54D8 /* InfoTableViewCell.swift */,
 			);
 			path = ProductCard;
+			sourceTree = "<group>";
+		};
+		84CEA3D12A1554FA005A54D8 /* ProductCart */ = {
+			isa = PBXGroup;
+			children = (
+				84CEA3D22A15550C005A54D8 /* ProductCartViewController.swift */,
+				84CEA3D42A155605005A54D8 /* CartTableViewCell.swift */,
+			);
+			path = ProductCart;
 			sourceTree = "<group>";
 		};
 		DEFA292AB08E1CBB05131883 /* Pods */ = {
@@ -329,13 +346,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84CEA3D92A155EC1005A54D8 /* CatalogConstants.swift in Sources */,
 				84CEA3A32A0E6D4F005A54D8 /* CatalogViewController.swift in Sources */,
 				84CEA3A72A0E6D68005A54D8 /* CatalogBuilder.swift in Sources */,
 				84CEA3A92A0E6E31005A54D8 /* SplashScreenBuilder.swift in Sources */,
 				84CEA3C42A10E570005A54D8 /* Products.swift in Sources */,
 				84CEA3A02A0E6C6A005A54D8 /* SplashScreenPresenter.swift in Sources */,
+				84CEA3D52A155605005A54D8 /* CartTableViewCell.swift in Sources */,
 				84CEA3B92A0E7D93005A54D8 /* CategoriesCollectionViewCell.swift in Sources */,
 				84CEA3BF2A10CF9D005A54D8 /* Categories.swift in Sources */,
+				84CEA3D32A15550C005A54D8 /* ProductCartViewController.swift in Sources */,
 				84CEA3CE2A139821005A54D8 /* ProductCardTableViewController.swift in Sources */,
 				84CEA3D02A13987D005A54D8 /* InfoTableViewCell.swift in Sources */,
 				84CEA3902A0D3212005A54D8 /* StartService.swift in Sources */,
