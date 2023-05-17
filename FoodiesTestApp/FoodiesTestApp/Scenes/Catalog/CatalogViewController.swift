@@ -118,7 +118,7 @@ final class CatalogViewController: UIViewController {
         categoriesCollectionView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(CatalogConstants.categoriesTop)
             $0.leading.trailing.equalToSuperview().inset(CategoriesCellConstants.insets)
-            $0.bottom.equalToSuperview().inset(CatalogConstants.catalogBottom)
+            $0.bottom.equalToSuperview().inset(CatalogConstants.categoriesBottom)
         }
         catalogCollectionView.snp.makeConstraints {
             $0.top.equalTo(categoriesCollectionView.safeAreaLayoutGuide.snp.bottom).offset(CatalogConstants.categoriesTop)
